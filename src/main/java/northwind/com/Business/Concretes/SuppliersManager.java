@@ -1,6 +1,10 @@
 package northwind.com.Business.Concretes;
 
 import northwind.com.Business.Abstracts.SuppliersService;
+import northwind.com.Core.DataResult;
+import northwind.com.Core.Result;
+import northwind.com.Core.SuccessDataResult;
+import northwind.com.Core.SuccessResult;
 import northwind.com.DataAccess.SuppliersRepository;
 import northwind.com.Entities.Concrete.Suppliers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,29 +17,36 @@ public class SuppliersManager implements SuppliersService {
     @Autowired
     SuppliersRepository suppliersRepository;
     @Override
-    public List<Suppliers> getAll(Suppliers supplier)
+    public DataResult<List<Suppliers>> getAll(Suppliers supplier)
     {
-       return  suppliersRepository.findAll();
+        List<Suppliers> all = suppliersRepository.findAll();
+        return new DataResult<>(true,"list is showing now successfully",all);
 
     }
     @Override
-    public Suppliers getById(int id)
+    public DataResult<Suppliers> getById(int id)
     {
-        return suppliersRepository.findById(id).get();
+
+                Suppliers supplier = suppliersRepository.findById(id).get();
+                return new DataResult<>(true,"object has been listed successfully",supplier);
     }
     @Override
-    public void createRow(Suppliers supplier)
+    public Result createRow(Suppliers supplier)
     {
-         suppliersRepository.save(supplier);
+
+        suppliersRepository.save(supplier);
+        return new SuccessResult(true,"has been created successfully");
+
     }
     @Override
-    public void deleteRow(int id)
+    public Result deleteRow(int id)
     {
-         suppliersRepository.deleteById(id);
+        suppliersRepository.deleteById(id);
+        return new SuccessResult(true,"has been deleted succesfully");
     }
     @Override
-    public void updateRow(Suppliers supplier)
-    { Suppliers tempSupplier = getById(supplier.getSupplierId());
+    public Result updateRow(Suppliers supplier)
+    { Suppliers tempSupplier = getById(supplier.getSupplierId()).getData();
         tempSupplier.setSupplierName(supplier.getSupplierName());
         tempSupplier.setCountry(supplier.getCountry());
         tempSupplier.setCity(supplier.getCity());
@@ -43,6 +54,7 @@ public class SuppliersManager implements SuppliersService {
         tempSupplier.setContactName(supplier.getContactName());
         tempSupplier.setPostalcode(supplier.getPostalcode());
         tempSupplier.setPhone(supplier.getPhone());
+        return new SuccessDataResult<>(true, "has been updated successfully",tempSupplier);
 
     }
 }

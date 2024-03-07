@@ -1,6 +1,8 @@
 package northwind.com.API;
 
 import northwind.com.Business.Concretes.SuppliersManager;
+import northwind.com.Core.DataResult;
+import northwind.com.Core.Result;
 import northwind.com.Entities.Concrete.Suppliers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,24 +15,26 @@ public class SuppliersController {
     @Autowired
     private SuppliersManager suppliersManager;
     @GetMapping("/getAll")
-    public List<Suppliers> getAll(Suppliers supplier)
+    public DataResult<List<Suppliers>> getAll(Suppliers supplier)
     {
         return suppliersManager.getAll(supplier);
     }
     @PostMapping("/createNewRow")
-    public void createNewRow(Suppliers supplier)
+    public Result createNewRow(Suppliers supplier)
     {
-        suppliersManager.createRow(supplier);
+
+        return suppliersManager.createRow(supplier);
     }
     @DeleteMapping("/deleteRow")
-            public void deleteRow(int id)
+    public Result deleteRow(int id)
     {
-         suppliersManager.deleteRow(id);
+        return  suppliersManager.deleteRow(id);
+
     }
     @PostMapping("/updateRow")
-    public void updateRow(Suppliers supplier)
+    public Result updateRow(Suppliers supplier)
     {
-        suppliersManager.updateRow(supplier);
+        return suppliersManager.updateRow(supplier);
     }
 
 

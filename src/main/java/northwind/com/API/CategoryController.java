@@ -1,10 +1,13 @@
 package northwind.com.API;
 
 import northwind.com.Business.Concretes.CategoryManager;
+import northwind.com.Core.DataResult;
+import northwind.com.Core.Result;
 import northwind.com.Entities.Concrete.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 @RestController
@@ -14,12 +17,12 @@ public class CategoryController {
     CategoryManager categoryManager;
 
     @GetMapping("/getAll")
-    public List<Category> getAll() {
+    public DataResult<List<Category>> getAll() {
         return categoryManager.getAllCategories();
     }
 
     @GetMapping("/getById")
-    public Category getById(int id) {
+    public DataResult<Category> getById(int id) {
         return categoryManager.getById(id);
     }
     @PostMapping("/createNewRow")
@@ -28,9 +31,8 @@ public class CategoryController {
         categoryManager.createNewRow(category);
         return "New row has been created succesfully";
     }
-    @GetMapping("/deleteExistingRow")
-    public String deleteExistingRow(Integer id)
-    {
+    @DeleteMapping("/deleteExistingRow")
+    public Result deleteExistingRow(Integer id) throws UnknownHostException {
          return categoryManager.deleteExistingRow(id);
     }
     @PostMapping("/updateRow")

@@ -2,6 +2,8 @@ package northwind.com.API;
 
 
 import northwind.com.Business.Concretes.ProductManager;
+import northwind.com.Core.DataResult;
+import northwind.com.Core.Result;
 import northwind.com.Entities.Concrete.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,31 +17,27 @@ public class ProductController {
     ProductManager productManager;
 
     @GetMapping("/getAll")
-    public List<Product> getAllProducts() {
+    public DataResult<List<Product>> getAllProducts() {
         return productManager.getAll();
     }
 
     @GetMapping("/findById")
-    public Product findProductId(int id) {
+    public DataResult<Product> findProductId(int id) {
         return productManager.getById(id);
     }
     @PostMapping("/createNewRow")
-    public Product createNewRow (@RequestBody Product product)
+    public Result createNewRow (@RequestBody Product product)
     {
         return productManager.createNewRow(product);
     }
-    @GetMapping("/deleteRow")
-    public void deleteRow (int id)
+    @DeleteMapping("/deleteRow")
+    public Result deleteRow (int id)
     {
-        productManager.deleteRow(id);
+       return productManager.deleteRow(id);
     }
     @PostMapping("/updateRow")
-    public void updateRow (Product product)
+    public Result updateRow (Product product)
     {
-        productManager.updateRow(product);
+        return productManager.updateRow(product);
     }
-
-
-
-
 }

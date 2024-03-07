@@ -1,10 +1,15 @@
 package northwind.com.Business.Concretes;
 
 import northwind.com.Business.Abstracts.OrdersService;
+import northwind.com.Core.DataResult;
+import northwind.com.Core.Result;
+import northwind.com.Core.SuccessDataResult;
+import northwind.com.Core.SuccessResult;
 import northwind.com.DataAccess.OrdersRepository;
 import northwind.com.Entities.Concrete.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionUsageException;
 
 import java.util.List;
 
@@ -13,35 +18,39 @@ public class OrdersManager implements OrdersService {
     @Autowired
     OrdersRepository ordersRepository;
     @Override
-    public List<Orders> getAll()
+    public DataResult<List<Orders>> getAll()
     {
-        return ordersRepository.findAll();
+        List<Orders> all = ordersRepository.findAll();
+        return new SuccessDataResult<>(true, "all rows has been listed successfully",all);
     }
     @Override
-    public Orders getById(int id)
+    public DataResult<Orders> getById(int id)
     {
-        return ordersRepository.findById(id).get();
+        final Orders order = ordersRepository.findById(id).get();
+        return new SuccessDataResult<>(true,"row has been fetched by id : ",order );
     }
     @Override
-    public Orders createNewRow (Orders order)
+    public Result createNewRow (Orders order)
     {
-        return ordersRepository.save(order);
+        ordersRepository.save(order);
+        return new SuccessDataResult<>(true, "has been created successfully",order);
 
     }
     @Override
-    public String deleteRow (int id)
+    public Result deleteRow (int id)
     {
         ordersRepository.deleteById(id);
-        return "Row has been deleted succesfully";
+        return new SuccessResult(true,"Row has been deleted succesfully");
     }
 
     @Override
-    public void update(Orders order) {
-        Orders tempOrder= getById(order.getOrderId());
+    public Result update(Orders order) {
+        Orders tempOrder= getById(order.getOrderId()).getData();
         tempOrder.setCustomerId(order.getCustomerId());
         tempOrder.setOrderDate(order.getOrderDate());
         tempOrder.setEmployeeId(order.getEmployeeId());
         tempOrder.setShipperId(order.getShipperId());
+        return  new SuccessDataResult<>(true,"has been updated succesfuly",tempOrder);
     }
 
 }
