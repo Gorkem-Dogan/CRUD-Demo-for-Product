@@ -1,4 +1,4 @@
-package northwind.com.Core;
+package northwind.com.Core.Result;
 
 public class SuccessResult extends Result{
     public SuccessResult(boolean success, String message) {

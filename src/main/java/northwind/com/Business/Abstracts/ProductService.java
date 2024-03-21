@@ -1,7 +1,7 @@
 package northwind.com.Business.Abstracts;
 
-import northwind.com.Core.DataResult;
-import northwind.com.Core.Result;
+import northwind.com.Core.Result.DataResult;
+import northwind.com.Core.Result.Result;
 import northwind.com.Entities.Concrete.Product;
 
 import java.util.List;

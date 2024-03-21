@@ -1,4 +1,4 @@
-package northwind.com.Core;
+package northwind.com.Core.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,4 +1,4 @@
-package northwind.com.Core;
+package northwind.com.Core.Result;
 
 public class DataResult<T> extends Result{
     private T data;

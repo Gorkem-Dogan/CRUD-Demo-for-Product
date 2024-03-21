@@ -1,15 +1,14 @@
 package northwind.com.Business.Concretes;
 
 import northwind.com.Business.Abstracts.OrdersService;
-import northwind.com.Core.DataResult;
-import northwind.com.Core.Result;
-import northwind.com.Core.SuccessDataResult;
-import northwind.com.Core.SuccessResult;
+import northwind.com.Core.Result.DataResult;
+import northwind.com.Core.Result.Result;
+import northwind.com.Core.Result.SuccessDataResult;
+import northwind.com.Core.Result.SuccessResult;
 import northwind.com.DataAccess.OrdersRepository;
 import northwind.com.Entities.Concrete.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionUsageException;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package northwind.com.API;
 
 
 import northwind.com.Business.Concretes.ProductManager;
-import northwind.com.Core.DataResult;
-import northwind.com.Core.Result;
+import northwind.com.Core.Result.DataResult;
+import northwind.com.Core.Result.Result;
 import northwind.com.Entities.Concrete.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

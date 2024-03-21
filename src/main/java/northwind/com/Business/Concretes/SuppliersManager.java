@@ -1,10 +1,10 @@
 package northwind.com.Business.Concretes;
 
 import northwind.com.Business.Abstracts.SuppliersService;
-import northwind.com.Core.DataResult;
-import northwind.com.Core.Result;
-import northwind.com.Core.SuccessDataResult;
-import northwind.com.Core.SuccessResult;
+import northwind.com.Core.Result.DataResult;
+import northwind.com.Core.Result.Result;
+import northwind.com.Core.Result.SuccessDataResult;
+import northwind.com.Core.Result.SuccessResult;
 import northwind.com.DataAccess.SuppliersRepository;
 import northwind.com.Entities.Concrete.Suppliers;
 import org.springframework.beans.factory.annotation.Autowired;
