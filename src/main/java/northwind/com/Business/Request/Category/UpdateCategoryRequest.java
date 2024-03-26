@@ -1,14 +1,21 @@
-package northwind.com.Business.Response;
+package northwind.com.Business.Request.Category;
 
 import lombok.Data;
 
 @Data
-public class GetByIdCategoryResponse {
-    private int categoryId;
+public class UpdateCategoryRequest
+{
 
-    private String description;
+    private Integer categoryId;
     private String categoryName;
+    private String description;
+    public Integer getCategoryId() {
+        return categoryId;
+    }
 
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
     public String getCategoryName() {
         return categoryName;
     }
@@ -23,13 +30,5 @@ public class GetByIdCategoryResponse {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 }

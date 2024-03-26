@@ -1,5 +1,10 @@
 package northwind.com.Business.Abstracts;
 
+import northwind.com.Business.Request.Orders.CreateOrdersResult;
+import northwind.com.Business.Request.Orders.DeleteOrdersRequest;
+import northwind.com.Business.Request.Orders.UpdateOrdersRequest;
+import northwind.com.Business.Response.Orders.GetAllOrdersResponse;
+import northwind.com.Business.Response.Orders.GetByIdOrdersResponse;
 import northwind.com.Core.Result.DataResult;
 import northwind.com.Core.Result.Result;
 import northwind.com.Entities.Concrete.Orders;
@@ -7,11 +12,11 @@ import northwind.com.Entities.Concrete.Orders;
 import java.util.List;
 
 public interface OrdersService {
-     DataResult<List<Orders>> getAll();
+     DataResult<List<GetAllOrdersResponse>> getAll();
 
-    DataResult<Orders> getById(int id);
-    Result createNewRow(Orders order);
-    Result deleteRow (int id);
-    Result update(Orders order);
+    DataResult<GetByIdOrdersResponse> getById(Integer id);
+    Result createNewRow(CreateOrdersResult order);
+    Result deleteRow (DeleteOrdersRequest deleteOrdersRequest);
+    Result update(UpdateOrdersRequest updateOrdersRequest);
 
 }

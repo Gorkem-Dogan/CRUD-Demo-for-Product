@@ -1,4 +1,4 @@
-package northwind.com.Business.Response;
+package northwind.com.Business.Response.Category;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

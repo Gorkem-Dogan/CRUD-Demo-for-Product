@@ -1,4 +1,4 @@
-package northwind.com.Business.Request;
+package northwind.com.Business.Request.Category;
 
 import lombok.Data;
 

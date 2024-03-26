@@ -1,11 +1,11 @@
 package northwind.com.Business.Concretes;
 
 import northwind.com.Business.Abstracts.CategoryService;
-import northwind.com.Business.Request.CreateCategoryRequest;
-import northwind.com.Business.Request.DeleteCategoryRequest;
-import northwind.com.Business.Request.UpdateCategoryRequest;
-import northwind.com.Business.Response.GetAllCategoryResponse;
-import northwind.com.Business.Response.GetByIdCategoryResponse;
+import northwind.com.Business.Request.Category.CreateCategoryRequest;
+import northwind.com.Business.Request.Category.DeleteCategoryRequest;
+import northwind.com.Business.Request.Category.UpdateCategoryRequest;
+import northwind.com.Business.Response.Category.GetAllCategoryResponse;
+import northwind.com.Business.Response.Category.GetByIdCategoryResponse;
 import northwind.com.Core.Mapping.ModelMapperService;
 import northwind.com.Core.Result.DataResult;
 import northwind.com.Core.Result.Result;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
